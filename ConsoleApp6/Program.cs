@@ -15,7 +15,7 @@ class ApplicationContext : DbContext
     public ApplicationContext()
     {
     }
-
+    int num1 = 4; int num2 =5; int num3 = 3;
     public DbSet<Classrooms> classrooms { get; set; }
     public DbSet<Student> students { get; set; }
     public DbSet<Academicsubj> academicsubj { get; set; }
@@ -38,7 +38,7 @@ class ApplicationContext : DbContext
 
 
 
-    static void Main(string[] args)
+    static void Main()
     {
         using (ApplicationContext applicationContext = new ApplicationContext())
         {
@@ -58,10 +58,10 @@ class ApplicationContext : DbContext
             Academicsubj academicsubj2 = new Academicsubj { name = "Информатика" };
             Academicsubj academicsubj3 = new Academicsubj { name = "Физика" };
 
-            Exam exam1 = new Exam { name = "Экзамен по математике" };
+            
+            Exam exam1 = new Exam { name = "Экзамен по математике"};
             Exam exam2 = new Exam { name = "Экзамен по информатике" };
             Exam exam3 = new Exam { name = "Экзамен по физике" };
-
 
             classrooms1.students.Add(student1);
             classrooms2.students.Add(student3);
@@ -82,21 +82,39 @@ class ApplicationContext : DbContext
             academicsubj2.exam.Add(exam2);
             academicsubj3.exam.Add(exam3);
 
+            
+
             applicationContext.SaveChanges();
 
         }
 
-
-
-        using (ApplicationContext applicationContext = new ApplicationContext())
+        Console.WriteLine("Выберите функцию и нажмите соотвествующую цифру");
+        Console.WriteLine("_______________________________________________");
+        Console.WriteLine("\t1 - Вывести список экзаменов");
+        Console.WriteLine("\t2 - Добавить новый случайный экзамен");
+        switch (Console.ReadLine())
         {
-            List<Exam> exam = applicationContext.exam.ToList();
-            foreach (Exam t in exam)
-            {
-                Console.WriteLine(t);
+            case "1":
+                using (ApplicationContext applicationContext = new ApplicationContext())
+                {
+                    List<Exam> exam = applicationContext.exam.ToList();
+                    foreach (Exam e in exam)
+                    {
+                        Console.WriteLine(e);
 
-            }
+                    }
+                }
+                break;
+
+            case "2":
+               
+                
+            break;
+
         }
+
+
+        
 
     }
 }

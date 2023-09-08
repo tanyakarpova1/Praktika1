@@ -17,16 +17,16 @@ namespace ConsoleApp6
             public int Id_ { get; set; }
             public string name { get; set; }
             public int score { get; set; }
-            public int academicsub { get; set; }
+            public int academicsubjacademicsub { get; set; }
             public int studentid { get; set; }
-
+            
             public Academicsubj academicsubj { get; set; }
 
             public Student student { get; set; }
 
             public override string ToString()
             {
-                return $"Information: name = {name}, score = {score}, student_id = {studentid}";
+                return $"Information: name = {name}, academic subject = {academicsubjacademicsub}, student_id = {studentid}";
             }
 
 
