@@ -1,11 +1,10 @@
 ﻿using Npgsql.EntityFrameworkCore.PostgreSQL;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-using static ConsoleApp6.StudentEntity;
-using static ConsoleApp6.ClassroomsEntity;
-using ConsoleApp6;
-using static ConsoleApp6.AcademicsubjEntity;
-using static ConsoleApp6.ExamEntity;
+using static ConsoleApp6.Models.StudentEntity;
+using static ConsoleApp6.Models.ClassroomsEntity;
+using static ConsoleApp6.Models.AcademicsubjEntity;
+using static ConsoleApp6.Models.ExamEntity;
 
 class ApplicationContext : DbContext
 {
@@ -15,7 +14,7 @@ class ApplicationContext : DbContext
     public ApplicationContext()
     {
     }
-    int num1 = 4; int num2 =5; int num3 = 3;
+   
     public DbSet<Classrooms> classrooms { get; set; }
     public DbSet<Student> students { get; set; }
     public DbSet<Academicsubj> academicsubj { get; set; }
@@ -24,6 +23,7 @@ class ApplicationContext : DbContext
     public ApplicationContext(DbContextOptions<ApplicationContext> options)
         : base(options)
     {
+        Database.EnsureDeleted();
         Database.EnsureCreated();
     }
 
@@ -107,14 +107,30 @@ class ApplicationContext : DbContext
                 break;
 
             case "2":
-               
-                
-            break;
+                using (ApplicationContext applicationContext = new ApplicationContext())
+                {
+                    Console.WriteLine("Введите название предмета");
+                    string? name1 = Console.ReadLine();
+                    Academicsubj academicsubj = new Academicsubj { name = name1};
+                    Console.WriteLine("Имя и фамилию ученика");
+                    string? name2 = Console.ReadLine();
+                    Console.WriteLine("Введите ФИО учителя");
+                    string? teacher4 = Console.ReadLine();
+                    Classrooms classrooms = new Classrooms { teacher = teacher4 };
+                    Student student = new Student { name = name2};
+                    Exam exam = new Exam { name = name1 };
+                    classrooms.students.Add(student);
+                    student.exam.Add(exam);
+                    academicsubj.exam.Add(exam);
+                    applicationContext.classrooms.Add(classrooms);
+                    applicationContext.students.Add(student);
+                    applicationContext.academicsubj.Add(academicsubj);
+                    applicationContext.exam.Add(exam);
+                    applicationContext.SaveChanges();
+                    Console.WriteLine($"Вы добавили новый экзамен: {name1}");
 
+                }
+                break;
         }
-
-
-        
-
     }
 }
