@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static ConsoleApp6.AcademicsubjEntity;
-using static ConsoleApp6.StudentEntity;
+using static ConsoleApp6.Models.AcademicsubjEntity;
+using static ConsoleApp6.Models.StudentEntity;
 
-namespace ConsoleApp6
+namespace ConsoleApp6.Models
 {
     class ExamEntity
     {
@@ -19,7 +19,7 @@ namespace ConsoleApp6
             public int score { get; set; }
             public int academicsubjacademicsub { get; set; }
             public int studentid { get; set; }
-            
+
             public Academicsubj academicsubj { get; set; }
 
             public Student student { get; set; }

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static ApplicationContext;
-using static ConsoleApp6.StudentEntity;
+using static ConsoleApp6.Models.StudentEntity;
 
-namespace ConsoleApp6
+namespace ConsoleApp6.Models
 {
 
     class ClassroomsEntity

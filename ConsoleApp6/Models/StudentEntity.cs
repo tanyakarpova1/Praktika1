@@ -2,14 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static ApplicationContext;
-using static ConsoleApp6.ClassroomsEntity;
-using static ConsoleApp6.ExamEntity;
+using static ConsoleApp6.Models.ClassroomsEntity;
+using static ConsoleApp6.Models.ExamEntity;
 
-namespace ConsoleApp6
+namespace ConsoleApp6.Models
 {
     class StudentEntity
     {

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static ConsoleApp6.StudentEntity;
-using static ConsoleApp6.ExamEntity;
+using static ConsoleApp6.Models.StudentEntity;
+using static ConsoleApp6.Models.ExamEntity;
 using System.ComponentModel.DataAnnotations;
 
-namespace ConsoleApp6
+namespace ConsoleApp6.Models
 {
     class AcademicsubjEntity
     {
